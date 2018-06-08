@@ -50,7 +50,7 @@ func getAverage(divisor int, dividend int) int {
 
 func getMin(arr []int) int {
 	var min int
-	//預設 - 最小值
+	//最小值初始 - 陣列第一個值
 	min = arr[0]
 	for i := 1; i < len(arr); i++ {
 		if min > arr[i] {
