@@ -11,8 +11,8 @@ import (
 )
 
 type Weather struct {
-	create_time string `gorm:"type:date;"`
-	information string `gorm:"type:varchar(255);"`
+	Create_time string `gorm:"type:time.Time;"`
+	Information string `gorm:"type:text;"`
 }
 
 func main() {
@@ -40,7 +40,7 @@ func getWeather(c echo.Context) error {
 	if response == "false" {
 		// 取DB
 		source = "DB"
-		// response = getDB()
+		response = getDB()
 
 		// 若DB沒資料，改取API
 		if response == "false" {
@@ -49,7 +49,7 @@ func getWeather(c echo.Context) error {
 			response = getAPI()
 
 			// 寫進DB
-			// setDB(response)
+			setDB(response)
 		}
 
 		// 寫進Redis
@@ -120,8 +120,8 @@ func getDB() string {
 	// db.First(&weather, 1) // find product with id 1
 	db.First(&weather, "create_time = ?", now) // find product with code l1212
 
-	if weather.information != "" {
-		return weather.information
+	if weather.Information != "" {
+		return weather.Information
 	}
 
 	return "false"
@@ -137,8 +137,8 @@ func setDB(data string) string {
 
 	// 要寫進DB的資料設定
 	weather := &Weather{
-		create_time: now,
-		information: data,
+		Create_time: now,
+		Information: data,
 	}
 
 	if err := db.Create(&weather).Error; err != nil {
