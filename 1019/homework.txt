@@ -1,0 +1,33 @@
+Homework 1
+1. 什麼是heap ? 什麼是stack ？
+stack(堆疊)：
+    用於靜態記憶體配置。後進先出。
+    儲存區域變數、函式參數、函示位置等等，由系統管理，自動分配/釋放
+    舉例說明：stack 如同只有一個孔且一次只能放一顆球進去的長型圓筒，當球一顆一顆放進去，想要取出來時，只能依序由最上面的球開始取得
+heap(堆積)：
+    用於動態記憶體配置。雜亂無綱自己去取。
+    由使用者自行分配釋放，通常使用malloc或是new，若使用者未釋放，程序結束後釋放此空間。
+    舉例說明：heap 如同一堆寫了名字的球放在桌上，可以自己去選擇我要使用哪顆球。
+
+2. queue 的儲存方式屬於heap 還是stack?
+queue 接近 stach 但並不全然，因為stack屬於LIFO(last in, first out)後進先出。但queue卻屬於(first in, first out)
+
+
+3. 說明heap 和stack 記憶體的回收機制
+stack(堆疊)：
+    由系統自己去釋放。
+heap(堆積)：
+    使用者可自行釋放，但若未釋放，程式執行結束時將自發釋放空間。
+
+
+
+參考文件：
+https://dotblogs.com.tw/lastsecret/2010/02/25/13757
+https://sites.google.com/a/cnsrl.cycu.edu.tw/da-shu-bi-ji/global-vs-stack-vs-heap
+
+
+
+檢討作業說明：
+1. go 對於一個process 擁有超大heap的態度
+2. heap 和stack 的抉擇，如何影響你程式的執行速度。
+3. 維護和易讀性問題。
